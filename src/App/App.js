@@ -13,10 +13,11 @@ import Footer from '../components/Footer/Footer';
 
 import ProtectedRoute from '../components/ProtectedRoute/ProtectedRoute';
 
-import UserPage from '../Pages/UserPage/UserPage';
+import HomePage from '../Pages/HomePage/HomePage';
 import LandingPage from '../Pages/LandingPage/LandingPage';
 import LoginPage from '../Pages/LoginPage/LoginPage';
 import RegisterPage from '../Pages/RegisterPage/RegisterPage';
+import Sessions from '../Pages/SessionsPage/Sessions';
 
 import './App.css';
 
@@ -42,7 +43,7 @@ class App extends Component {
               // logged in shows UserPage else shows LoginPage
               exact
               path="/user"
-              component={UserPage}
+              component={HomePage}
             />
 
             {/* When a value is supplied for the authRedirect prop the user will
@@ -73,6 +74,16 @@ class App extends Component {
               exact
               path="/home"
               component={LandingPage}
+              authRedirect="/user"
+            />
+            
+            <Route
+              // with authRedirect:
+              // - if logged in, redirects to "/user"
+              // - else shows LandingPage at "/home"
+              exact
+              path="/sessions"
+              component={Sessions}
               authRedirect="/user"
             />
 
